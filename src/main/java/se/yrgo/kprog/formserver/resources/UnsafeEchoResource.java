@@ -16,7 +16,7 @@
 package se.yrgo.kprog.formserver.resources;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
@@ -57,15 +57,14 @@ public class UnsafeEchoResource {
     private String getDataFromParamsAndBody() throws IOException {
         final var params = request.getParameterMap();
         final var paramsOutput = new StringBuilder();
-        params.entrySet().forEach(entry -> {
+        params.entrySet().forEach(entry ->
             paramsOutput.append(entry.getKey())
                         .append("=")
                         .append(Arrays.toString(entry.getValue()))
-                        .append("<br>");
-            
-        });
+                        .append("<br>")
+            );
         
-        var postBody = IOUtils.toString(request.getInputStream(), Charset.forName("UTF-8"));
+        var postBody = IOUtils.toString(request.getInputStream(), StandardCharsets.UTF_8);
 
         return "<!DOCTYPE html><html><body>"
                 + "Parameters:<br>"+ paramsOutput.toString() + 

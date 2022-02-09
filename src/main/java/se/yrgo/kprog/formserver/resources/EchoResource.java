@@ -58,13 +58,12 @@ public class EchoResource {
     private String getDataFromParamsAndBody() throws IOException {
         final var params = request.getParameterMap();
         final var paramsOutput = new StringBuilder();
-        params.entrySet().forEach(entry -> {
+        params.entrySet().forEach(entry ->
             paramsOutput.append(StringEscapeUtils.escapeHtml4(entry.getKey()))
                         .append("=")
                         .append(StringEscapeUtils.escapeHtml4(Arrays.toString(entry.getValue())))
-                        .append("<br>");
-            
-        });
+                        .append("<br>")
+        );
         
         var postBody = IOUtils.toString(request.getInputStream(), StandardCharsets.UTF_8);
         postBody = StringEscapeUtils.escapeHtml4(postBody);

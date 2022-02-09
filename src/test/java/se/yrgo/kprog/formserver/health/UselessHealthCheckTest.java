@@ -24,7 +24,7 @@ import org.junit.jupiter.api.Test;
  * Test that our useless health check is in fact useless.
  * 
  */
-public class UselessHealthCheckTest {
+class UselessHealthCheckTest {
     
     public UselessHealthCheckTest() {
     }
@@ -35,7 +35,7 @@ public class UselessHealthCheckTest {
      * @throws java.lang.Exception
      */
     @Test
-    public void testCheck() throws Exception {
+    void testCheck() throws Exception {
         UselessHealthCheck instance = new UselessHealthCheck();
         HealthCheck.Result expResult = Result.healthy();
         HealthCheck.Result result = instance.check();

@@ -30,13 +30,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
  * 
  */
 @ExtendWith(DropwizardExtensionsSupport.class)
-public class EchoResourceTest extends DropwizardTestBase {
+class EchoResourceTest extends DropwizardTestBase {
 
     /**
      * Test that the GET method works as expected.
      */
     @Test
-    public void testHandleGetFormdata() throws Exception {
+    void testHandleGetFormdata() throws Exception {
         WebTarget target = getWebTarget("/api/echo?data=test");
         String resp = target.request(MediaType.TEXT_HTML).get(String.class);
         assertTrue(resp.contains("Parameters:<br>data=[test]"));
@@ -46,7 +46,7 @@ public class EchoResourceTest extends DropwizardTestBase {
      * Test that the POST method works as expected.
      */
     @Test
-    public void testHandlePostFormdata() throws Exception {
+    void testHandlePostFormdata() throws Exception {
         WebTarget target = getWebTarget("/api/echo");
         Form f = new Form();
         f.param("data", "someval");
@@ -58,7 +58,7 @@ public class EchoResourceTest extends DropwizardTestBase {
      * Test that the data is escaped properly in the output.
      */
     @Test
-    public void testHandleBadGetFormdata() throws Exception {
+    void testHandleBadGetFormdata() throws Exception {
         WebTarget target = getWebTarget("/api/echo?data=%3Cbr%3E");
         String resp = target.request(MediaType.TEXT_HTML).get(String.class);
         assertFalse(resp.contains("data=[<br>]"));

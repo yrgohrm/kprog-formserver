@@ -28,13 +28,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
  * Tests for UnsafeEchoResource.
  */
 @ExtendWith(DropwizardExtensionsSupport.class)
-public class UnsafeEchoResourceTest extends DropwizardTestBase{
+class UnsafeEchoResourceTest extends DropwizardTestBase{
 
     /**
      * Test GET method.
      */
     @Test
-    public void testHandleGetFormdata() throws Exception {
+    void testHandleGetFormdata() throws Exception {
         WebTarget target = getWebTarget("/api/unsafeecho?data=test");
         String resp = target.request(MediaType.TEXT_HTML).get(String.class);
         assertTrue(resp.contains("Parameters:<br>data=[test]"));
@@ -45,7 +45,7 @@ public class UnsafeEchoResourceTest extends DropwizardTestBase{
      * @throws java.lang.Exception
      */
     @Test
-    public void testHandlePostFormdata() throws Exception {
+    void testHandlePostFormdata() throws Exception {
         WebTarget target = getWebTarget("/api/unsafeecho");
         Form f = new Form();
         f.param("data", "someval");
@@ -58,7 +58,7 @@ public class UnsafeEchoResourceTest extends DropwizardTestBase{
      * @throws java.lang.Exception
      */
     @Test
-    public void testHandleUnsafeGetFormdata() throws Exception {
+    void testHandleUnsafeGetFormdata() throws Exception {
         WebTarget target = getWebTarget("/api/unsafeecho?data=%3Cbr%3E");
         String resp = target.request(MediaType.TEXT_HTML).get(String.class);
         assertTrue(resp.contains("Parameters:<br>data=[<br>]"));
