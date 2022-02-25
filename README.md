@@ -9,9 +9,9 @@ This is a simple web service that echoes back form data (url encoded forms and q
 How to start the kprog-formserver application
 ---
 
-1. Run `mvn clean install` to build your application
-1. Start application with `java -jar target/kprog-formserver-1.0.jar server config.yml`
-1. To check that your application is running enter url `http://localhost:8080`
+1. Run `mvn clean package` to build your application
+2. Start application with `java -jar target/kprog-formserver-1.0.1.jar server config.yml`
+3. To check that your application is running enter url `http://localhost:8080`
 
 It is possible to configure the port in config.yml.
 
