@@ -1,5 +1,9 @@
 server:
     rootPath: /api
+    applicationConnectors:
+    - type: http 
+      # change this port number if you have other services running
+      port: 8080
 
 logging:
   level: INFO
